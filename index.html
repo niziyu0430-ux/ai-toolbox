@@ -7,12 +7,13 @@
   <meta name="description" content="2026最新AI工具推荐大全。收录超过100+款免费和付费的AI效率工具。" />
   <meta name="keywords" content="AI工具箱, ChatGPT, Midjourney, AI绘画, 程序员助手" />
 
-  <!-- ✅ 仅新增：分享/SEO 基础元信息（不影响排版） -->
   <meta name="theme-color" content="#4f46e5" />
   <meta property="og:title" content="AI 效率工具箱 - 2026 免费好用的 AI 工具导航" />
   <meta property="og:description" content="2026最新AI工具推荐大全。收录超过100+款免费和付费的AI效率工具。" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_CN" />
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9460160226236788" crossorigin="anonymous"></script>
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
 
@@ -110,7 +111,8 @@
     .tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag { font-size: 12px; background: #f1f5f9; color: #64748b; padding: 4px 10px; border-radius: 6px; }
 
-    .ad-card { background: #f8fafc; border: 2px dashed #cbd5e1; align-items: center; justify-content: center; min-height: 200px; box-shadow: none; }
+    /* 广告卡片样式修正，移除 dashed 边框，使其融合 */
+    .ad-card { background: #fff; border: 1px solid var(--border); align-items: center; justify-content: center; min-height: 200px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); overflow: hidden; }
 
     /* SEO 内容区域 */
     .seo-section { background: white; padding: 60px 0; border-top: 1px solid var(--border); margin-top: auto; }
@@ -193,8 +195,8 @@
     }
 
     /* =========================
-       ✅ 新增：工具详情页样式（同一 HTML 内独立详情页）
-    ========================= */
+       ✅ 新增：工具详情页样式
+    ========================================================= */
     #tool-page{
       padding: 48px 0 80px;
       min-height: 60vh;
@@ -410,7 +412,6 @@
     </section>
   </div>
 
-  <!-- ✅ 新增：工具详情页（同一 HTML 内独立详情页） -->
   <div id="tool-page" class="hidden">
     <div class="container tool-content">
       <div class="back-btn" onclick="showHome()">
@@ -436,6 +437,7 @@
         <p>本站使用“Cookies”来存储有关访问者偏好的信息，以及访问者访问或访问的网站页面的信息。这些信息用于通过根据访问者的浏览器类型和/或其他信息定制我们的网页内容来优化用户体验。</p>
         <h2>3. Google AdSense & DART Cookie</h2>
         <p>Google 是我们网站上的第三方供应商。它使用 DART Cookie 根据访问者访问本站及互联网上其他网站的情况，向我们的网站访问者投放广告。访问者可以访问 Google 广告和内容网络隐私政策及条款，选择拒绝使用 DART Cookie。</p>
+        <p>根据 Google 政策，本站会显示由 Google 提供的广告。</p>
       </div>
 
       <div id="disclaimer-content" class="hidden">
@@ -492,16 +494,14 @@
       legalPage.classList.add('hidden');
       toolPage.classList.add('hidden');
 
-      // 恢复默认标题/描述（利于分享与可读性）
+      // 恢复默认标题/描述
       document.title = "AI 效率工具箱 - 2026 免费好用的 AI 工具导航";
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) metaDesc.setAttribute('content', '2026最新AI工具推荐大全。收录超过100+款免费和付费的AI效率工具。');
 
-      // 回到首页时，移除 tool 参数但保留 q/cat
       const st = getUrlState();
       setUrlState({ q: st.q, cat: st.cat, tool: '' });
 
-      // 不强制重置筛选：用户回退希望保持原筛选
       filterTools({ preserveTool: false, pushUrl: false });
     }
 
@@ -518,15 +518,15 @@
       if (type === 'disclaimer') disclaimerContent.classList.remove('hidden');
     }
 
-    // 让 HTML 里的 onclick 继续可用
     window.showHome = showHome;
     window.showLegal = showLegal;
 
     // -----------------------------
-    // 1) 数据定义 (100+ 工具) —— 你原有 toolsData 不变
+    // 1) 数据定义 (100+ 工具)
     // -----------------------------
     const toolsData = [
-      // --- 💬 对话与助手 ---
+      // ... (此处保持原有数据不变，为节省篇幅略去，代码结构未变) ...
+      // 您之前提供的数据依然在这里
       { name: "ChatGPT", desc: "OpenAI 最强对话模型，全能型助手，支持 GPT-4。", tags: ["对话", "写作", "翻译"], category: "chat", url: "https://chat.openai.com", icon: "ri-openai-fill" },
       { name: "Claude 3", desc: "Anthropic 出品，长文本分析能力超强，代码能力卓越。", tags: ["对话", "长文本", "编程"], category: "chat", url: "https://claude.ai", icon: "ri-robot-fill" },
       { name: "Gemini", desc: "Google 原生多模态大模型，深度集成 Google 生态。", tags: ["Google", "多模态", "免费"], category: "chat", url: "https://gemini.google.com", icon: "ri-google-fill" },
@@ -537,8 +537,6 @@
       { name: "Character.ai", desc: "与各种虚拟角色对话，沉浸式角色扮演体验。", tags: ["娱乐", "角色扮演", "对话"], category: "chat", url: "https://beta.character.ai", icon: "ri-user-smile-fill" },
       { name: "HuggingChat", desc: "Hugging Face 推出的开源模型对话界面。", tags: ["开源", "开发者", "免费"], category: "chat", url: "https://huggingface.co/chat", icon: "ri-open-source-fill" },
       { name: "Pi", desc: "Inflection AI 出品，主打高情商、陪伴型对话。", tags: ["情感", "陪伴", "对话"], category: "chat", url: "https://pi.ai", icon: "ri-heart-3-fill" },
-
-      // --- 💻 编程与开发 ---
       { name: "GitHub Copilot", desc: "AI 结对编程助手，自动补全代码，提升开发效率。", tags: ["编程", "VSCode", "效率"], category: "code", url: "https://github.com/features/copilot", icon: "ri-github-fill" },
       { name: "Cursor", desc: "基于 VS Code 的 AI 原生编辑器，代码生成能力极强。", tags: ["IDE", "编辑器", "GPT-4"], category: "code", url: "https://cursor.sh", icon: "ri-code-box-fill" },
       { name: "Vercel v0", desc: "通过对话生成 UI 界面代码 (React/Tailwind)，前端神器。", tags: ["前端", "UI", "生成"], category: "code", url: "https://v0.dev", icon: "ri-layout-3-fill" },
@@ -551,8 +549,6 @@
       { name: "CodeGeeX", desc: "智谱 AI 推出的编程助手，支持中文注释和代码解释。", tags: ["中文", "国产", "插件"], category: "code", url: "https://codegeex.cn", icon: "ri-translate-2-fill" },
       { name: "Warp", desc: "AI 驱动的现代终端 (Terminal)，智能命令提示。", tags: ["终端", "命令行", "Mac"], category: "code", url: "https://www.warp.dev", icon: "ri-terminal-box-fill" },
       { name: "Devin (Cognition)", desc: "号称世界首个完全自主的 AI 软件工程师。", tags: ["Agent", "自主", "未来"], category: "code", url: "https://www.cognition-labs.com/introducing-devin", icon: "ri-robot-line" },
-
-      // --- 🎨 绘画与设计 ---
       { name: "Midjourney", desc: "目前效果最好的 AI 绘画工具，艺术感极强。", tags: ["绘画", "艺术", "Discord"], category: "image", url: "https://www.midjourney.com", icon: "ri-brush-ai-fill" },
       { name: "Stable Diffusion", desc: "最强开源绘画模型，支持本地部署，可控性高。", tags: ["开源", "本地", "绘画"], category: "image", url: "https://stability.ai", icon: "ri-image-edit-fill" },
       { name: "DALL·E 3", desc: "OpenAI 出品，语义理解能力强，集成在 ChatGPT 中。", tags: ["简单", "准确", "绘画"], category: "image", url: "https://openai.com/dall-e-3", icon: "ri-openai-line" },
@@ -565,8 +561,6 @@
       { name: "Magnific AI", desc: "AI 图像超分辨率放大工具，增加惊人的细节。", tags: ["放大", "高清", "修复"], category: "image", url: "https://magnific.ai", icon: "ri-hd-fill" },
       { name: "Recraft", desc: "生成矢量图、图标和 3D 插图的 AI 设计工具。", tags: ["矢量", "图标", "设计"], category: "image", url: "https://www.recraft.ai", icon: "ri-pen-nib-fill" },
       { name: "Krea AI", desc: "实时 AI 绘画工具，画草图即时生成高质量图片。", tags: ["实时", "创意", "草图"], category: "image", url: "https://www.krea.ai", icon: "ri-pencil-ruler-2-fill" },
-
-      // --- 📝 写作与办公 ---
       { name: "Notion AI", desc: "集成在 Notion 中的 AI，辅助笔记整理、写作和总结。", tags: ["笔记", "文档", "效率"], category: "write", url: "https://www.notion.so", icon: "ri-file-text-fill" },
       { name: "Grammarly", desc: "AI 语法检查与润色工具，英文写作必备。", tags: ["英语", "纠错", "润色"], category: "write", url: "https://www.grammarly.com", icon: "ri-text-check" },
       { name: "Jasper", desc: "专业的营销文案写作 AI，适合写广告、博客。", tags: ["营销", "文案", "商业"], category: "write", url: "https://www.jasper.ai", icon: "ri-advertisement-fill" },
@@ -579,8 +573,6 @@
       { name: "ChatPDF", desc: "上传 PDF 文档，与文档对话，快速提取摘要。", tags: ["PDF", "阅读", "总结"], category: "write", url: "https://www.chatpdf.com", icon: "ri-file-pdf-fill" },
       { name: "Otter.ai", desc: "AI 会议记录工具，实时转录语音并生成摘要。", tags: ["会议", "转录", "语音"], category: "write", url: "https://otter.ai", icon: "ri-mic-2-fill" },
       { name: "Jenni AI", desc: "专为学术论文写作设计的 AI 助手，带引用功能。", tags: ["学术", "论文", "引用"], category: "write", url: "https://jenni.ai", icon: "ri-book-open-fill" },
-
-      // --- 🎥 视频与音频 ---
       { name: "Runway", desc: "AI 视频编辑与生成工具，支持文字生成视频 (Gen-2)。", tags: ["视频", "生成", "编辑"], category: "video", url: "https://runwayml.com", icon: "ri-movie-fill" },
       { name: "Sora", desc: "OpenAI 发布的文生视频模型，效果惊艳 (暂未公测)。", tags: ["视频", "生成", "OpenAI"], category: "video", url: "https://openai.com/sora", icon: "ri-film-fill" },
       { name: "Pika", desc: "简单好用的 AI 视频生成平台，支持图片动效。", tags: ["动画", "视频", "生成"], category: "video", url: "https://pika.art", icon: "ri-clapperboard-fill" },
@@ -591,8 +583,6 @@
       { name: "CapCut (剪映)", desc: "字节跳动出品，内置大量 AI 剪辑功能和特效。", tags: ["剪辑", "手机", "免费"], category: "video", url: "https://www.capcut.com", icon: "ri-scissors-cut-fill" },
       { name: "Descript", desc: "像编辑文档一样编辑视频和音频，自动去除语气词。", tags: ["剪辑", "播客", "文档"], category: "video", url: "https://www.descript.com", icon: "ri-edit-circle-fill" },
       { name: "Luma Dream Machine", desc: "高质量且快速的 AI 视频生成模型。", tags: ["视频", "3D", "免费"], category: "video", url: "https://lumalabs.ai/dream-machine", icon: "ri-video-add-fill" },
-
-      // --- 🛠️ 效率工具与其它 ---
       { name: "Zapier", desc: "自动化工作流工具，连接不同的 AI 应用。", tags: ["自动化", "工作流", "效率"], category: "tools", url: "https://zapier.com", icon: "ri-links-fill" },
       { name: "IFTTT", desc: "如果不...就...，简单的自动化工具。", tags: ["自动化", "脚本", "连接"], category: "tools", url: "https://ifttt.com", icon: "ri-flow-chart" },
       { name: "Hugging Face", desc: "AI 界的 GitHub，海量开源模型和数据集。", tags: ["社区", "模型", "开源"], category: "tools", url: "https://huggingface.co", icon: "ri-brain-line" },
@@ -603,8 +593,6 @@
       { name: "Rewind", desc: "记录你屏幕上的一切，真正的“人生搜索引擎”。", tags: ["记忆", "Mac", "搜索"], category: "tools", url: "https://www.rewind.ai", icon: "ri-history-fill" },
       { name: "Arc Search", desc: "浏览器革命，为你自动浏览网页并生成结果。", tags: ["浏览器", "移动端", "搜索"], category: "tools", url: "https://arc.net", icon: "ri-compass-3-fill" },
       { name: "Monica", desc: "全能 AI 浏览器插件，随时随地调用 AI。", tags: ["插件", "助手", "便捷"], category: "tools", url: "https://monica.im", icon: "ri-plug-fill" },
-
-      // --- 补充热门工具 ---
       { name: "PopAi", desc: "基于 PPT 和文档的 AI 助手，适合办公场景。", tags: ["办公", "文档", "PPT"], category: "write", url: "https://www.popai.pro", icon: "ri-file-ppt-fill" },
       { name: "Skybox AI", desc: "Blockade Labs 出品，一键生成 360 度全景天空盒。", tags: ["3D", "游戏", "全景"], category: "image", url: "https://skybox.blockadelabs.com", icon: "ri-earth-line" },
       { name: "SeaArt", desc: "国产 AI 绘画工具，模型丰富，功能类似 Civitai。", tags: ["绘画", "国产", "模型"], category: "image", url: "https://www.seaart.ai", icon: "ri-palette-line" },
@@ -636,7 +624,7 @@
     ];
 
     // -----------------------------
-    // 2) URL 状态：q / cat / tool
+    // 2) URL 状态
     // -----------------------------
     function getUrlState() {
       const url = new URL(window.location.href);
@@ -663,7 +651,7 @@
     }
 
     // -----------------------------
-    // 3) 分类 meta & 工具 id 生成（保证每个工具可有独立详情页）
+    // 3) 分类 meta & 工具 id
     // -----------------------------
     const CATEGORY_META = {
       all:   { emoji: "🔥", label: "全部" },
@@ -688,13 +676,10 @@
     const toolById = new Map(toolsData.map(t => [t._id, t]));
 
     // -----------------------------
-    // 4) SEO：JSON-LD（目录站更友好）
+    // 4) SEO：JSON-LD
     // -----------------------------
     function injectJsonLd(tools) {
-      const base =
-        (location.protocol === 'file:')
-          ? 'https://example.com/'
-          : (location.origin + location.pathname);
+      const base = (location.protocol === 'file:') ? 'https://example.com/' : (location.origin + location.pathname);
 
       const website = {
         "@context": "https://schema.org",
@@ -728,7 +713,7 @@
     }
 
     // -----------------------------
-    // 5) 小工具：防抖 / HTML 转义
+    // 5) 小工具
     // -----------------------------
     function debounce(fn, wait = 120) {
       let t = null;
@@ -760,18 +745,34 @@
     }
 
     // -----------------------------
-    // 6) 渲染：首页卡片（点击进入详情，不跳官网）
+    // 6) 渲染：首页卡片 (含广告逻辑修正)
     // -----------------------------
     const grid = document.getElementById('toolsGrid');
     const searchInput = document.getElementById('searchInput');
     const noResults = document.getElementById('noResults');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
+    // ✅ 修改：使用您图片中的真实广告单元代码
     function createAdCard() {
       const div = document.createElement('div');
       div.className = "card ad-card";
-      div.innerHTML = `<span style="font-size:12px;color:#cbd5e1;margin-bottom:8px;font-family:monospace;">ADVERTISEMENT</span>
-        <div style="background:#f1f5f9;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;border-radius:8px;">广告位</div>`;
+
+      // 1. 插入广告 HTML 结构
+      div.innerHTML = `
+        <span style="font-size:12px;color:#cbd5e1;margin-bottom:8px;font-family:monospace;display:block;">ADVERTISEMENT</span>
+        <ins class="adsbygoogle"
+             style="display:block; width: 100%;"
+             data-ad-client="ca-pub-9460160226236788"
+             data-ad-slot="6306749709"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      `;
+
+      // 2. 动态触发广告请求 (因为 script 标签不能直接通过 innerHTML 执行)
+      const script = document.createElement('script');
+      script.innerText = '(adsbygoogle = window.adsbygoogle || []).push({});';
+      div.appendChild(script);
+
       return div;
     }
 
@@ -811,7 +812,6 @@
           <div class="tags">${tool.tags.map(t => `<span class="tag">#${escapeHtml(t)}</span>`).join('')}</div>
         `;
 
-        // ✅ 不跳官网：进入详情页
         a.addEventListener('click', (e) => {
           e.preventDefault();
           showToolDetail(tool._id);
@@ -819,6 +819,7 @@
 
         frag.appendChild(a);
 
+        // 每8个卡片插入一个广告位
         if ((index + 1) % 8 === 0) frag.appendChild(createAdCard());
       });
 
@@ -826,7 +827,7 @@
     }
 
     // -----------------------------
-    // 7) 筛选逻辑（保持体验 + 支持 URL 状态）
+    // 7) 筛选逻辑
     // -----------------------------
     let currentCategory = 'all';
 
@@ -865,7 +866,6 @@
         filterTools({ preserveTool: false });
       });
     });
-
     // -----------------------------
     // 8) 详情页文案（热门手写 + 其余模板生成，保证每个工具都有完整详情）
     // -----------------------------
@@ -1254,4 +1254,3 @@
   </script>
 </body>
 </html>
-
